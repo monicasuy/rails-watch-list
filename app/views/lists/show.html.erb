@@ -2,25 +2,19 @@
   <h1><%= @list.name %></h1>
 
   <div class="card-movie">
-    <% @list.movies.each do |movie| %>
+    <% @list.bookmarks.each do |bookmark| %>
       <li>
-        <img src="<%= movie.poster_url %>" alt="">
-        <%= "#{movie.title} --- #{movie.overview} --- #{movie.rating}" %>
+      <img src="<%= bookmark.movie.poster_url %>">
+        <%= "Title: #{bookmark.movie.title}" %>
+        <%= "Rating #{bookmark.movie.rating}" %>
+        <%= "Overview: #{bookmark.movie.overview}" %>
+        <%= "Comment: #{bookmark.comment}" %>
+        <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete %>
+        <% end %>
       </li>
-    <% end %>
     </ul>
   </div>
 
-  <div class="card-bookmark">
-    <ul>
-    <% @list.bookmarks.each do |bookmark| %>
-      <li>
-        <%= "#{bookmark.movie.title} --- #{bookmark.comment}" %>
-        <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete %>
-      </li>
-    <% end %>
-    </ul>
-  </div>
 
   <ul>
     <li>
