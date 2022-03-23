@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: %i[show]
+  before_action :set_list, only: %i[show destroy]
 
   def index
     @lists = List.all
@@ -17,6 +17,12 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @list.destroy
+      redirect_to root_path
     end
   end
 

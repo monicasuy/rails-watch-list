@@ -1,21 +1,27 @@
 <div class="container">
   <h1><%= @list.name %></h1>
 
-  </div>
-  <div class="card-trip">
+<div class="cards">
   <% @list.bookmarks.each do |bookmark| %>
-  <img src="<%= bookmark.movie.poster_url %>" />
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= bookmark.movie.title %></h2>
-      <p><%= bookmark.movie.overview %></p>
+    <div class="card-trip">
+      <img src="<%= bookmark.movie.poster_url %>">
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+        </div>
+        <div class="movies-comment">
+          <h2 class="card-trip-pricing"><%= bookmark.movie.rating %> <i class="fas fa-star" style= "color: gold;"></i></h2>
+          <p class="comment">"<%= bookmark.comment %>" </p><br>
+          <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete,  class: "btn btn-flat" %><br>
+        </div>
+      </div>
     </div>
-    <h2 class="card-trip-pricing"><%= bookmark.movie.rating %></h2>
-    <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete %>
-    <% end %>
-  </div>
+  <% end %>
 </div>
 
+
+</div>
 
   <ul>
     <li>
@@ -25,4 +31,3 @@
       <%= link_to "Create new bookmark", new_list_bookmark_path(@list) %>
     </li>
   </ul>
-</div>
