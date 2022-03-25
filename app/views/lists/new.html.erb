@@ -1,7 +1,12 @@
-<h1>Create a new list</h1>
+<%# new page for lists where the user can create a new list using the simple form gem. User can input the name and a picture for the cover of their list. They also have the option to go back to the lists index page in case they change their mind %>
+<div class="container">
+  <h1>Create a new list</h1>
 
-<%= simple_form_for [ @list ] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "Submit list", class: "btn btn-primary" %>
-<% end %>
+  <%= simple_form_for [ @list ] do |f| %>
+    <%= f.input :name , class: "input-name"%>
+    <%= f.input :photo, as: :file, class: "input-photo" %>
+    <%= f.submit "Submit list", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to "Back to lists", lists_path, class: "btn btn-links" %>
+</div>

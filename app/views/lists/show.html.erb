@@ -1,33 +1,28 @@
+<%# show page for a specific list where the user will be redirected after choosing a specific list.
+User will be able to see the bookmarks inside of that list, create new bookmarks, delete existing bookmarks or go back to the lists index page %>
+<%# For the bookmark, the user will see the movie poster, the comment that the user created for that specific movie, the rating and a button to delete it %>
 <div class="container">
   <h1><%= @list.name %></h1>
 
-<div class="cards">
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-trip">
-      <img src="<%= bookmark.movie.poster_url %>">
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2>
-          <p><%= bookmark.movie.overview %></p>
-        </div>
-        <div class="movies-comment">
-          <h2 class="card-trip-pricing"><%= bookmark.movie.rating %> <i class="fas fa-star" style= "color: gold;"></i></h2>
-          <p class="comment">"<%= bookmark.comment %>" </p><br>
-          <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete,  class: "btn btn-flat" %><br>
+
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-movie">
+        <img src="<%= bookmark.movie.poster_url %>">
+        <div class="card-movie-infos">
+          <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <p><%= bookmark.movie.overview %></p>
+          </div>
+          <div class="movies-comment">
+            <h2 class="card-movie-pricing"><%= bookmark.movie.rating %> <i class="fas fa-star" style= "color: gold;"></i></h2>
+            <p class="comment">"<%= bookmark.comment %>" </p><br>
+            <%= link_to "Delete this bookmark", bookmark_path(bookmark), method: :delete,  class: "btn btn-flat" %><br>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  <%= link_to "Back to lists", lists_path, class: "btn btn-links" %>
+  <%= link_to "Create new bookmark", new_list_bookmark_path(@list), class: "btn btn-links" %>
 </div>
-
-
-</div>
-
-  <ul>
-    <li>
-      <%= link_to "Back to lists", lists_path %>
-    </li>
-    <li>
-      <%= link_to "Create new bookmark", new_list_bookmark_path(@list) %>
-    </li>
-  </ul>

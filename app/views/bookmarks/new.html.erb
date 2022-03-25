@@ -1,10 +1,13 @@
-<h1>Create a new bookmark</h1>
+<div class="container">
+  <h1>Create a new bookmark</h1>
 
-<%= simple_form_for [ @list, @bookmark ] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.submit "Submit bookmark", class: "btn btn-primary" %>
-<% end %>
+  <%# using the simple form gem to create a form where the user can input the information for their new bookmark %>
+  <%= simple_form_for [ @list, @bookmark ] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit "Submit bookmark", class: "btn btn-primary" %>
+  <% end %>
 
-<%= link_to "Back to lists", lists_path %>
-<%= link_to "Back to #{@list.name} list", list_path(@list) %>
+  <%= link_to "Back to lists", lists_path, class: "btn btn-links" %>
+  <%= link_to "Back to #{@list.name} list", list_path(@list), class: "btn btn-links" %>
+</div>
