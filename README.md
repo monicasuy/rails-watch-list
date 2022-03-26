@@ -9,3 +9,7 @@ It is one of the projects I did in the bootcamp by myself when learning how Rail
 a bit basic, but it was incredibly useful to learn all things CRUD.
 
 If I have more time, at some point I would like to add Rspec to it (TDD) so I could have tests for all the methods and functionality. I would also like to switch to using an API that allows the user to choose more films so there is more variety for the user to choose which films to include in their list.
+
+There are more comments along with the code in the controllers, models and views.
+
+Thank you for taking the time to go through my project and I hope you like it! :)
